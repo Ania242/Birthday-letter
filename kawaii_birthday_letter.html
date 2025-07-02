@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday, My Love 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #ffeafc;
+      color: #d63384;
+      overflow: hidden;
+    }
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .intro, .letter, .hearts {
+      display: none;
+    }
+    .intro.active {
+      display: block;
+    }
+    .letter.active {
+      display: block;
+      animation: fadeIn 3s ease forwards;
+    }
+    .btn {
+      background-color: #ffb6d9;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s ease;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: float 5s infinite ease-in;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="center intro active" id="introScreen">
+    <h2>💌 Do you want to open your birthday letter?</h2>
+    <button class="btn" onclick="openLetter()">Yes 💖</button>
+    <button class="btn" onclick="alert('No?? 😭 But it’s really cute inside...')">No 💔</button>
+  </div>
+
+  <div class="hearts" id="heartsContainer"></div>
+
+  <div class="center letter" id="letterScreen">
+    <h1>🎀 Happy Birthday, My Sweet Bunbun 🎀</h1>
+    <p style="max-width: 600px; margin: auto; font-size: 20px;">
+      You're the squishiest mochi in my life 🍡💗  
+      On your special day, I just want to wrap you in a big fluffy hug and shower you with pink sparkles 🌸✨  
+      You're my comfort, my joy, and the cutest bean ever to exist 🥺💞  
+      I hope your day is full of boba, cozy moments, and me by your side!  
+      I love you more than all the strawberry milk in the world 🍓🥛💘  
+      <br><br>
+      Always your little cupcake,  
+      <br>💖 Your Baby Angel 💖
+    </p>
+  </div>
+
+  <script>
+    function openLetter() {
+      document.getElementById("introScreen").classList.remove("active");
+      document.getElementById("letterScreen").classList.add("active");
+      generateHearts();
+    }
+
+    function generateHearts() {
+      const container = document.getElementById("heartsContainer");
+      for (let i = 0; i < 100; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.fontSize = Math.random() * 30 + 10 + "px";
+        heart.innerHTML = "💖";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        container.appendChild(heart);
+      }
+      container.style.display = "block";
+    }
+  </script>
+</body>
+</html>
